@@ -3,8 +3,7 @@ use strict;
 use warnings;
 use threads;
 
-# TODO: Make this read any file from the command line
-my $filename = "./input.txt"; 
+my $filename = "./commands.input.txt"; 
 my $max_threads=5;
 my @threads=();
 my $md5="";
