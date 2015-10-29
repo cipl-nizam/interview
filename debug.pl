@@ -1,6 +1,6 @@
 #!/usr/bin/env perl
 use strict;
-use warnings;
+use warning;
 
 my $myarray=(1,2,3,4);
 my $count=0;
@@ -15,6 +15,7 @@ if ($count != $#myarray) {
 my %names = {
   "john"=>"male",
   "jessica"=>"female",
+  "dominique"=>"female",
   "pat"=>"male",
 };
 
@@ -29,6 +30,7 @@ if ($#{keys %names} == 2) {
 }
 else {
   print "error: The hash has an incorrect amount of results\n";
+  exit 1;
 }
 
 my $emails = {
@@ -47,6 +49,7 @@ foreach my $name (keys %names) {
 
 if (%names->{'dominique'}{'email'} ne $email->{'dominique'}) {
   print "3) error: The email for dominique does not match\n";
+  exit 1;
 }
 
 print "3) Works!\n"
