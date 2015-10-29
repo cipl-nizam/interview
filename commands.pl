@@ -43,11 +43,9 @@ sub file_changed {
 # the first line as a 'command' and all other lines as 'instructions'
 # Line 1 is always the command
 # Lines 2..N are the instructions
+# See the README for how to process the specific instructions
 #
 if ( -f $filename ) {
-  # Recored the files initial state
-  $md5 = `md5sum $filename`;
-  chomp($md5);
   # Spin up some threads
   for (my $i=1; $i<=$max_threads; $i++) {
     push @threads, async {

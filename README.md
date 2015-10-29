@@ -6,7 +6,6 @@ the remaining lines are the relevant instructions. commands.pl must support the
 following commands:
 
 - shutdown
-- identity parse
 
 **shutdown**
 
@@ -26,4 +25,14 @@ shutdown
 5
 ```
 
-If the above input is received, then thread 4 should shut down first and then thread 2 and so forth until thread 5 is the last one to shutdown.
+If the above input is received, then thread 4 should shut down first and then thread 2 and so forth until thread 5 is the last one to shutdown. The thread should print to stdout the statement: "Thread $id shutting down\n".  So the example output should look something like:
+
+```
+press ctrl+c to stop the script
+Thread 4 shutting down
+Thread 2 shutting down
+Thread 3 shutting down
+Thread 1 shutting down
+Thread 5 shutting down
+...exiting
+```
