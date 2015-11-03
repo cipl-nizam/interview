@@ -6,14 +6,22 @@ use threads;
 my $filename = "./commands.input.txt"; 
 my $max_threads=5;
 my @threads=();
+my @lines=();
 my $md5="";
+my  $i=1;
+
 
 # Subroutine to shutdown the threads before exiting
 sub onexit {
+  open(INFO, $filename) or die("Could not open  file.");
+   chomp(@lines = <INFO>);
   if (scalar @threads > 0) {
+    
     foreach my $thread (@threads) {
       $thread->kill('KILL');
       $thread->join();
+	  print "Thread  $lines[$i] shutting down\n";
+	  $i++;
     }
   }
   print "...exiting\n";
@@ -49,8 +57,8 @@ if ( -f $filename ) {
   for (my $i=1; $i<=$max_threads; $i++) {
     push @threads, async {
       $SIG{'KILL'} = sub {
-        threads->exit();
       };
+        threads->exit();
       my $x = int(rand($max_threads));
       while(1) {
         sleep 1;
