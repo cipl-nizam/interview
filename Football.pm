@@ -99,8 +99,8 @@ sub valid_location {
 sub get_teams_at_location {
   my $self = shift;
   my $location = shift;
-  if (!$self->valid_location($location)) {
-    return [];
+  if (!valid_location('',$location)) {
+    return "";
   }
   return TEAMSBYLOCATION->{$location};
 }
@@ -108,7 +108,7 @@ sub get_teams_at_location {
 sub get_team_location {
   my $self = shift;
   my $team = shift;
-  if (!$self->valid_team($team)) {
+  if (!valid_team('',$team)) {
     return "";
   }
   return TEAMSBYNAME->{$team};
